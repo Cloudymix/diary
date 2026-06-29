@@ -10,6 +10,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.loginBox{
+    background:#222;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    width:320px;
+}
+
+.loginBox input{
+    width:100%;
+    padding:12px;
+    margin:15px 0;
+}
+
+.loginBox button{
+    width:100%;
+}
+.credit{
+    position:fixed;
+    top:24px;
+    left:24px;
+    color:rgba(255,255,255,.5);
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:.3px;
+    z-index:100;
+    user-select:none;
+}
+
+.credit em{
+    font-style:italic;
+    font-weight:600;
+}
+.date{
+    margin-top:4px;
+    font-size:11px;
+    color:rgba(255,255,255,.5);
+    font-weight:400;
+}
 #status{
     margin-top:15px;
     text-align:center;
@@ -30,24 +80,23 @@ body{
 }
 
 .background{
-	position:fixed;
-	inset:0;
+    position:fixed;
+    inset:0;
 
-	background:linear-gradient(
-		-45deg,
-		#001233,
-		#003566,
-		#00509d,
-		#0077b6,
-		#00b4d8,
-		#90e0ef
-);
-	background-size:500% 500%;
-	animation:gradient 15s ease infinite;
-z-index:-2;
+    background:linear-gradient(
+        -45deg,
+        #240046,
+        #5a189a,
+        #7b2cbf,
+        #9d4edd,
+        #c77dff,
+        #e0aaff
+    );
 
+    background-size:500% 500%;
+    animation:gradient 15s ease infinite;
+    z-index:-2;
 }
-
 @keyframes gradient{
 
 0%{
@@ -67,7 +116,7 @@ background-position:0% 50%;
 
 	position:fixed;
 	inset:0;
-	background:rgba(0,0,0,.45);
+	background:rgba(0,0,0,0.6);
 	backdrop-filter:blur(14px);
 	z-index:-1;
 
@@ -86,8 +135,8 @@ background-position:0% 50%;
 }
 
 .message{
-    font-size:1.6rem;
-    line-height:1.7;
+    font-size:16px;
+    line-height:1.2;
     max-width:650px;
 }
 	.right{
@@ -164,7 +213,7 @@ max-width:450px;
 }
 
 .message{
-font-size:0.5rem;
+font-size: 10px;
 
 }
 
@@ -173,19 +222,35 @@ font-size:0.5rem;
 </style>
 </head>
 <body>
+<div id="lockScreen">
+    <div class="loginBox">
+        <h2>whoRu</h2>
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="unlock()">Enter</button>
+<br></br>
+        <p id="error"></p>
+    </div>
 
+</div>
+<div class="credit">
+    <div>made by your <em>hopefully</em> soon to be husband :)</div>
+    <div class="date" id="dateTime"></div>
+</div>
 <div class="background"></div>
 <div class="overlay"></div>
 <div class="container">
 <div class="left">
 <div class="message">
 
-Hi.
-I made this page because there are some things that are easier to say anonymously.
-If you want to tell me something—
-anything at all—
-I'm listening.
+<p style="font-size: 10 px;">
+hello sofi :)) first time ko lang gumawa ng website for someone HAHAHHAHA
+<br></br>
+i would write here everyday about us, about my feelings, or what i hope for in us.
+minsan kasi natatakot ako to say everything through chat. i know we're walking on thin ice and i just want to say what i feel here, will change it everyday, baka every night. you can leave your replies as seen on the right side, i would prefer if you entered something there, sayang effort ko to do all these things for you hhh.
+<br></br>
+that's all muna for today, mkay? thank you !!
 
+</p>
 </div>
 
 </div>
@@ -196,7 +261,7 @@ I'm listening.
 
 <textarea
 id="reply"
-placeholder="Talk to me if you want :)"
+placeholder="send smt to me if u want :)"
 ></textarea>
 
 <button onclick="sendReply()">
@@ -214,8 +279,38 @@ Send
 </div>
 
 <script>
+function updateDateTime() {
+    const now = new Date();
+
+    const options = {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+	second: "2-digit"
+    };
+
+    document.getElementById("dateTime").textContent =
+        now.toLocaleString("en-US", options);
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
 const WEB_APP_URL =
 "https://script.google.com/macros/s/AKfycbw8fP6xa4ep7zLg0fUj4CixoVi6hIaInJaFFqqqcqafbjrELbADi0L7r6tAJGptTePY/exec";
+
+const PASSWORD = "091624";
+
+function unlock(){
+    const input = document.getElementById("password").value;
+
+    if(input === PASSWORD){
+        document.getElementById("lockScreen").style.display = "none";
+    }else{
+        document.getElementById("error").textContent = "Incorrect password.";
+    }
+}
 
 async function sendReply() {
 
