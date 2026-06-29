@@ -326,19 +326,11 @@ async function sendReply() {
 
         textarea.value = "";
 
-       status.textContent = "✓ Message sent!";
-status.style.opacity = "1";
+        status.textContent = "✓ Message sent!";
+        status.style.opacity = "1";
 
-requestAnimationFrame(() => {
-    status.style.opacity = "0";
-});
-
-textarea.value = "";
-
-setTimeout(() => {
-    status.textContent = "";
-    status.style.opacity = "1";
-}, 500);
+        setTimeout(() => {
+            status.style.opacity = "0";
 
         }, 3000);
 
