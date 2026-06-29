@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Talk To Me</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+height:100vh;
+overflow:hidden;
+color:white;
+
+}
+
+/* Moving Background */
+
+.background{
+
+position:fixed;
+inset:0;
+
+background:linear-gradient(
+-45deg,
+#001233,
+#003566,
+#00509d,
+#0077b6,
+#00b4d8,
+#90e0ef
+);
+
+background-size:500% 500%;
+
+animation:gradient 15s ease infinite;
+
+z-index:-2;
+
+}
+
+@keyframes gradient{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+/* Glass Overlay */
+
+.overlay{
+
+position:fixed;
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(14px);
+
+z-index:-1;
+
+}
+
+.container{
+
+height:100%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:8%;
+
+gap:70px;
+
+}
+
+/* LEFT */
+
+.left{
+
+flex:1;
+
+}
+
+.message{
+
+font-size:2rem;
+
+line-height:1.7;
+
+max-width:650px;
+
+}
+
+/* RIGHT */
+
+.right{
+
+width:430px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border-radius:22px;
+
+padding:25px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+textarea{
+
+width:100%;
+
+height:200px;
+
+padding:18px;
+
+background:rgba(255,255,255,.08);
+
+border:none;
+
+border-radius:15px;
+
+outline:none;
+
+resize:none;
+
+font-size:16px;
+
+color:white;
+
+}
+
+textarea::placeholder{
+
+color:rgba(255,255,255,.7);
+
+}
+
+button{
+
+width:100%;
+
+margin-top:18px;
+
+padding:15px;
+
+border:none;
+
+border-radius:14px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+background:linear-gradient(90deg,#2196f3,#64b5f6);
+
+color:white;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+}
+
+#status{
+
+margin-top:15px;
+
+text-align:center;
+
+font-size:15px;
+
+opacity:.8;
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+
+justify-content:center;
+
+text-align:center;
+
+}
+
+.right{
+
+width:100%;
+max-width:450px;
+
+}
+
+.message{
+
+font-size:1.6rem;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+<div class="left">
+
+<div class="message">
+
+<!-- CHANGE THIS MESSAGE -->
+
+Hi.
+
+I made this page because there are some things that are easier to say anonymously.
+
+If you want to tell me something—
+
+anything at all—
+
+I'm listening.
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="card">
+
+<textarea
+id="reply"
+placeholder="Talk to me if you want :)"
+></textarea>
+
+<button onclick="sendReply()">
+
+Send
+
+</button>
+
+<div id="status"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const WEB_APP_URL =
+"PASTE_YOUR_WEB_APP_URL_HERE";
+
+async function sendReply(){
+
+const message=document.getElementById("reply").value.trim();
+
+const status=document.getElementById("status");
+
+if(message===""){
+
+status.innerHTML="Please type something.";
+
+return;
+
+}
+
+status.innerHTML="Sending...";
+
+try{
+
+const response=await fetch(WEB_APP_URL,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+message:message,
+
+userAgent:navigator.userAgent,
+
+ip:"Unavailable"
+
+})
+
+});
+
+const result=await response.json();
+
+if(result.success){
+
+status.innerHTML="✓ Message sent.";
+
+document.getElementById("reply").value="";
+
+}else{
+
+status.innerHTML="Couldn't send.";
+
+}
+
+}catch(e){
+
+status.innerHTML="Error sending message.";
+
+console.log(e);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
