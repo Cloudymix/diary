@@ -9,6 +9,14 @@
 
 <style>
 
+#status{
+    margin-top:15px;
+    text-align:center;
+    font-size:15px;
+    opacity:0;
+    transition:opacity .5s ease;
+}
+
 *{
 margin:0;
 padding:0;
@@ -295,32 +303,58 @@ Send
 </div>
 
 <script>
-
 const WEB_APP_URL =
 "https://script.google.com/macros/s/AKfycbw8fP6xa4ep7zLg0fUj4CixoVi6hIaInJaFFqqqcqafbjrELbADi0L7r6tAJGptTePY/exec";
 
 async function sendReply() {
+
     const textarea = document.getElementById("reply");
     const status = document.getElementById("status");
+
+    if (textarea.value.trim() === "") return;
 
     const formData = new FormData();
     formData.append("message", textarea.value);
 
     try {
+
         await fetch(WEB_APP_URL, {
             method: "POST",
             body: formData,
             mode: "no-cors"
         });
 
-        status.textContent = "✓ Message sent!";
         textarea.value = "";
+
+        status.textContent = "✓ Message sent!";
+        status.style.opacity = "1";
+
+        setTimeout(() => {
+            status.style.opacity = "0";
+
+            setTimeout(() => {
+                status.textContent = "";
+            }, 500);
+
+        }, 3000);
+
     } catch (err) {
+
         console.error(err);
+
         status.textContent = "Error sending message.";
+        status.style.opacity = "1";
+
+        setTimeout(() => {
+            status.style.opacity = "0";
+
+            setTimeout(() => {
+                status.textContent = "";
+            }, 500);
+
+        }, 3000);
     }
 }
 </script>
-
 </body>
 </html>
