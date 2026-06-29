@@ -299,41 +299,27 @@ Send
 const WEB_APP_URL =
 "https://script.google.com/macros/s/AKfycbw8fP6xa4ep7zLg0fUj4CixoVi6hIaInJaFFqqqcqafbjrELbADi0L7r6tAJGptTePY/exec";
 
-async function sendReply(){
+async function sendReply() {
+    const textarea = document.getElementById("reply");
+    const status = document.getElementById("status");
 
-const message=document.getElementById("reply").value.trim();
+    const formData = new FormData();
+    formData.append("message", textarea.value);
 
-const status=document.getElementById("status");
+    try {
+        await fetch(WEB_APP_URL, {
+            method: "POST",
+            body: formData,
+            mode: "no-cors"
+        });
 
-if(message===""){
-
-status.innerHTML="Please type something.";
-
-return;
-
+        status.textContent = "✓ Message sent!";
+        textarea.value = "";
+    } catch (err) {
+        console.error(err);
+        status.textContent = "Error sending message.";
+    }
 }
-
-status.innerHTML="Sending...";
-
-try {
-
-    await fetch(WEB_APP_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-    });
-
-    status.innerHTML = "✓ Message sent!";
-    textarea.value = "";
-
-} catch (err) {
-
-    status.innerHTML = "Error sending message.";
-
-}
-
-}
-
 </script>
 
 </body>
