@@ -84,6 +84,7 @@ body{
     inset:0;
 
     background:linear-gradient(
+        -45deg,	
         #000000
     );
 
@@ -124,6 +125,9 @@ background-position:0% 50%;
 	gap:70px;
 }
 
+.left{
+	flex:1;
+}
 
 .message{
     font-size:16px;
@@ -224,7 +228,7 @@ font-size: 10px;
 
 </div>
 <div class="credit">
-    <div>made by your someone</div>
+    <div>made by <em>someone</em> </div>
     <div class="date" id="dateTime"></div>
 </div>
 <div class="background"></div>
@@ -234,13 +238,31 @@ font-size: 10px;
 <div class="message">
 
 <p style="font-size: 10 px;">
-hey. it'll be my last message, i removed the chat box so you won't be able to respond.	
-<br></br>
-alam ko i said that i will continue this, but i see no point anymore. oo masakit, pero wala akong magagawa. it's better to let go. so from now on, this will be the last and only message to be displayed in this website.
-<br></br>
-goodluck and enjoy. hope you succeed in life.
+leave me a note if you need something. :)
+
 
 </p>
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="card">
+
+<textarea
+id="reply"
+placeholder="send smt to me if u want :)"
+></textarea>
+
+<button onclick="sendReply()">
+
+Send
+
+</button>
+
+<div id="status"></div>
+
 </div>
 
 </div>
