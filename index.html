@@ -138,7 +138,19 @@ background-position:0% 50%;
     display:block;
     margin-bottom:20px;
 }
+.photos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;          /* Space between images */
+    margin-bottom:20px;
+}
 
+.photos img{
+    width:220px;       /* Size of each image */
+    height:auto;
+    border-radius:10px; /* Optional */
+}
 .card{
    width:700px;
     max-width:90vw;
@@ -231,9 +243,11 @@ opacity:.8;
 <div class="container">
 <div class="left">
 <div class="message">
-
-<img src="final.png" alt="picture of us">
-<br>
+<div class="photos">
+    <img src="final.png" alt="Picture 1">
+    <img src="imissyou.png" alt="Picture 2">
+    <img src="istillloveyou.png" alt="Picture 3">
+</div><br>
 <p style="font-size: 10 px;">
 i love you, and only you.
 <br>
