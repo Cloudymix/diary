@@ -117,12 +117,12 @@ background-position:0% 50%;
 
 }
 .container{
-	height:100%;
-	display:flex;
-	justify-content:space-between;
-	align-items:center;
-	padding:8%;
-	gap:70px;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8%;
+    gap:70px;
 }
 
 .left{
@@ -139,18 +139,21 @@ background-position:0% 50%;
     max-width:650px;
 }
 
+
 .message img{
     width:420px;   /* adjust as needed */
     max-width:100%;
     display:block;
     margin-bottom:20px;
 }
+
 .card{
 	background:rgba(255,255,255,.08);
 	border:1px solid rgba(255,255,255,.12);
 	backdrop-filter:blur(20px);
 	border-radius:22px;
 	padding:25px;
+	width: 100%;
 
 box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
@@ -208,9 +211,8 @@ text-align:center;
 }
 
 .right{
-width:100%;
-max-width:450px;
-
+    flex:0 0 430px;   /* fixed width */
+    width:430px;
 }
 
 .message{
@@ -222,7 +224,7 @@ font-size: 10px;
 
 </style>
 </head>
-<body>
+<body>	
 <div id="lockScreen">
     <div class="loginBox">
         <h2>whoRu</h2>
@@ -234,7 +236,7 @@ font-size: 10px;
 
 </div>
 <div class="credit">
-    <div>made by <em>someone</em> </div>
+    <div>made by <em>no one</em> </div>
     <div class="date" id="dateTime"></div>
 </div>
 <div class="background"></div>
