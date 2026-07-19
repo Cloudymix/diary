@@ -117,29 +117,22 @@ background-position:0% 50%;
 
 }
 .container{
-    height:100%;
+    width:100%;
+    min-height:100vh;
     display:flex;
-    justify-content:space-between;
+    flex-direction:column;
     align-items:center;
-    padding:8%;
-    gap:70px;
+    justify-content:flex-start;   /* Start from the top */
+    padding:80px 20px;
+    gap:40px;
 }
-
-.left{
-    flex:1;
-    display:flex;
-    justify-content:center;
-}
-
 .message{
     display:flex;
     flex-direction:column;
     align-items:center;
     text-align:center;
-    max-width:650px;
+    max-width:700px;
 }
-
-
 .message img{
     width:420px;   /* adjust as needed */
     max-width:100%;
@@ -148,26 +141,29 @@ background-position:0% 50%;
 }
 
 .card{
-	background:rgba(255,255,255,.08);
-	border:1px solid rgba(255,255,255,.12);
-	backdrop-filter:blur(20px);
-	border-radius:22px;
-	padding:25px;
-	width: 100%;
+    width:700px;
+    max-width:90vw;
 
-box-shadow:0 15px 40px rgba(0,0,0,.35);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    border-radius:22px;
+
+    padding:20px;   /* was 30px */
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
 textarea{
-width:100%;
-height:200px;
-padding:18px;
-background:rgba(255,255,255,.08);
-border:none;
-border-radius:15px;
-outline:none;
-resize:none;
-font-size:16px;
-color:white;
+    width:100%;
+    height:120px;          /* was 200px */
+    padding:18px;
+    background:rgba(255,255,255,.08);
+    border:none;
+    border-radius:15px;
+    outline:none;
+    resize:none;
+    font-size:16px;
+    color:white;
 }
 
 textarea::placeholder{
@@ -176,17 +172,17 @@ color:rgba(255,255,255,.7);
 }
 
 button{
-width:100%;
-margin-top:18px;
-padding:15px;
-border:none;
-border-radius:14px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-background:linear-gradient(90deg,#2196f3,#64b5f6);
-color:white;
-transition:.3s;
+    width:100%;
+    margin-top:12px;      /* was 18px */
+    padding:14px;         /* was 15px */
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(90deg,#2196f3,#64b5f6);
+    color:white;
+    transition:.3s;
 }
 
 button:hover{
@@ -201,25 +197,28 @@ font-size:15px;
 opacity:.8;
 
 }
-
+.left,
+.right{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
 @media(max-width:900px){
 .container{
-flex-direction:column;
-justify-content:center;
-text-align:center;
-
-}
+        padding:40px 20px;
+        gap:35px;
+    }
+.card{
+        width:100%;
+    }
 
 .right{
-    flex:0 0 430px;   /* fixed width */
-    width:430px;
-}
-
-.message{
-font-size: 10px;
-
-}
-
+    width:100%;
+    display:flex;
+    justify-content:center;
+} .message img{
+        width:260px;
+    }
 }
 
 </style>
@@ -248,18 +247,9 @@ font-size: 10px;
 <img src="final.png" alt="picture of us" style="width:300px; display:block;">
 <br>
 <p style="font-size: 10 px;">
-this will be my last and final change of this website.
+i love you, and only you.
 <br>
-please continue to be happy and loving.
-<br>
-i love you, at IKAW LANG.
-<br>
-i will close this chapter in my life na po.
-<br>
-i wish you well if you will love someone new! :)
-<br>
-<br>
-written on July 19, 2026, 4:01 PM.
+'til we meet again, mahal! :)
 
 </p>
 </div>
