@@ -74,11 +74,11 @@
     font-family:"Figtree", sans-serif;
 }
 body{
-	height:100vh;
-	overflow:hidden;
-	color:white;
+    min-height:100vh;
+    overflow-y:auto;   /* Allow vertical scrolling */
+    overflow-x:hidden; /* Prevent horizontal scrolling */
+    color:white;
 }
-
 .background{
     position:fixed;
     inset:0;
@@ -118,13 +118,12 @@ background-position:0% 50%;
 }
 .container{
     width:100%;
-    min-height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:flex-start;   /* Start from the top */
-    padding:80px 20px;
-    gap:40px;
+    justify-content:flex-start;
+    padding:60px 20px 40px; /* Less bottom padding */
+    gap:35px;
 }
 .message{
     display:flex;
@@ -141,21 +140,20 @@ background-position:0% 50%;
 }
 
 .card{
-    width:700px;
+   width:700px;
     max-width:90vw;
-
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.12);
     backdrop-filter:blur(20px);
     border-radius:22px;
 
-    padding:20px;   /* was 30px */
+    padding:18px;   /* was 30px */
 
     box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
 textarea{
     width:100%;
-    height:120px;          /* was 200px */
+    height:100px;          /* was 200px */
     padding:18px;
     background:rgba(255,255,255,.08);
     border:none;
