@@ -215,8 +215,12 @@ opacity:.8;
     display:flex;
     justify-content:center;
 } .message img{
-        width:260px;
-    }
+    width:250px;      /* Change this value */
+    max-width:100%;
+    height:auto;      /* Keeps the aspect ratio */
+    display:block;
+    margin-bottom:20px;
+}
 }
 
 </style>
@@ -232,17 +236,13 @@ opacity:.8;
     </div>
 
 </div>
-<div class="credit">
-    <div>made by <em>no one</em> </div>
-    <div class="date" id="dateTime"></div>
-</div>
 <div class="background"></div>
 <div class="overlay"></div>
 <div class="container">
 <div class="left">
 <div class="message">
 
-<img src="final.png" alt="picture of us" style="width:300px; display:block;">
+<img src="final.png" alt="picture of us">
 <br>
 <p style="font-size: 10 px;">
 i love you, and only you.
